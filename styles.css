@@ -1,0 +1,12 @@
+/* Additional custom styles */
+.hide {
+    display: none;
+}
+
+#rto-details {
+    margin-top: 20px;
+}
+
+#state-map, #district-map {
+    margin-top: 20px;
+}

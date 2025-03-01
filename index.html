@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTO Code Finder</title>
+    <!-- Materialize CSS for modern design -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Leaflet.js for interactive maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #state-map, #district-map {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="center-align">RTO Code Finder</h1>
+        <div class="row">
+            <div class="input-field col s12 m8 offset-m2">
+                <input type="text" id="rto-code" class="validate" placeholder="Enter RTO Code (e.g., DL-1)">
+                <label for="rto-code">RTO Code</label>
+                <button id="search-btn" class="btn-large waves-effect waves-light blue">Search</button>
+            </div>
+        </div>
+        <div id="loading-spinner" class="center-align hide">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Loading...</p>
+        </div>
+
+        <div id="result" class="hide">
+            <h3>Search Result</h3>
+            <ul id="rto-details" class="collection"></ul>
+            <div id="state-map"></div>
+            <div id="district-map"></div>
+        </div>
+    </div>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+CREATE DATABASE RtoCodes;
+
+USE rto_codes;
+
+-- States Table
+CREATE TABLE states (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    country VARCHAR(255) NOT NULL,
+    population INT NOT NULL
+);
+
+-- Districts Table
+CREATE TABLE districts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    state_id INT,
+    name VARCHAR(255) NOT NULL,
+    pin_code VARCHAR(10),
+    population INT NOT NULL,
+    state_map_url VARCHAR(255),
+    district_map_url VARCHAR(255),
+    FOREIGN KEY (state_id) REFERENCES states(id)
+);
+
+-- RTO Codes Table
+CREATE TABLE rto_details (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    rto_code VARCHAR(10) NOT NULL,
+    state_id INT,
+    district_id INT,
+    FOREIGN KEY (state_id) REFERENCES states(id),
+    FOREIGN KEY (district_id) REFERENCES districts(id)
+);
+
+
+
+
+
+
+-- Add States
+INSERT INTO states (name, country, population) VALUES ('Delhi', 'India', 20000000);
+INSERT INTO states (name, country, population) VALUES ('Maharashtra', 'India', 123000000);
+
+-- Add Districts
+INSERT INTO districts (state_id, name, pin_code, population, state_map_url, district_map_url) 
+VALUES (1, 'Central Delhi', '110001', 2500000, 'https://example.com/state-map/delhi.png', 'https://example.com/district-map/central-delhi.png');
+INSERT INTO districts (state_id, name, pin_code, population, state_map_url, district_map_url) 
+VALUES (2, 'Mumbai', '400001', 12000000, 'https://example.com/state-map/maharashtra.png', 'https://example.com/district-map/mumbai.png');
+
+-- Add RTO Codes
+INSERT INTO rto_details (rto_code, state_id, district_id) VALUES ('DL-1', 1, 1);
+INSERT INTO rto_details (rto_code, state_id, district_id) VALUES ('MH-02', 2, 2);
